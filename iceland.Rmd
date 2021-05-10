@@ -22,7 +22,7 @@ library(here)
 library(bibliometrix)
 library(reshape2)
 library(ggplot2)
-df <- convert2df(file = "scopus.bib", 
+df <- convert2df(file = "arch.bib", 
                  dbsource = "scopus", 
                  format = "bibtex")
 ```
@@ -34,12 +34,12 @@ results <- biblioAnalysis(df,
                           sep = ";")
 options(width = 100)
 s <- summary(object = results, 
-             k = 10, 
+             k = 20, 
              pause = FALSE)
 
 # plot attributes
 plot(x = results, 
-     k = 10, 
+     k = 20, 
      pause = FALSE)
 ```
 
@@ -49,10 +49,10 @@ plot(x = results,
 # calculate citations in local network
 CR <- localCitations(df, sep = ";")
 
-# top 10 cited authors in local network
+# top 20 cited authors in local network
 CR$Authors[1:20,]
 
-# top 10 cited papers in local network
+# top 20 cited papers in local network
 CR$Papers[1:20,]
 ```
 
@@ -108,10 +108,10 @@ auth.co.net = networkPlot(auth.co.mat,
                           n = 50, 
                           Title = "Author Co-Citation Network", 
                           type = "auto", 
-                          size = 20, 
+                          size = 10, 
                           size.cex = T, 
                           remove.multiple = FALSE, 
-                          labelsize = 0.75, 
+                          labelsize = 0.5, 
                           edgesize = 8, 
                           edges.min = 3, 
                           remove.isolates = TRUE)
@@ -137,11 +137,10 @@ auth.coup.net = networkPlot(auth.coup.mat,
                           n = 50, 
                           Title = "Author Coupling Network", 
                           type = "mds", 
-                          size = 20, 
+                          size = 25, 
                           size.cex = T,
-                          community.repulsion = 1,
                           remove.multiple = FALSE, 
-                          labelsize = 0.4, 
+                          labelsize = 0.5, 
                           edgesize = 10, 
                           edges.min = 8, 
                           remove.isolates = TRUE)
@@ -159,7 +158,7 @@ The historiographic map is a chronological network map of the most relevant dire
 # historical citation network
 options(width = 100)
 histResults <- histNetwork(df, 
-                           min.citations = 2, 
+                           min.citations = 20, 
                            sep = ";")
 
 # plot historical co-citation network
@@ -168,6 +167,7 @@ hnet <- histPlot(histResults,
                  size = 6, 
                  labelsize = 2)
 ```
+
 ### ID and DE keyword associations
 
 ```{r key.assoc, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
@@ -180,9 +180,33 @@ list[[1]][1:10]
 
 ### Yearly occurrences of top keywords/terms
 
+#### Authors' keywords
+
 ```{r key.growth, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 topKW = KeywordGrowth(df, 
                       Tag = "DE", 
+                      sep = ";", 
+                      top=10, 
+                      cdf=TRUE)
+
+topKW
+
+# plot results
+key.plot = melt(topKW, 
+                id='Year')
+
+ggplot(key.plot, aes(Year, 
+                     value, 
+                     group = variable, 
+                     color = variable)) + 
+  geom_line()
+```
+
+#### Publisher's keywords
+
+```{r key.growth2, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+topKW = KeywordGrowth(df, 
+                      Tag = "ID", 
                       sep = ";", 
                       top=10, 
                       cdf=TRUE)
@@ -206,6 +230,8 @@ ggplot(key.plot, aes(Year,
 
 The co-word analysis maps the conceptual structure of a research domain using the co-occurrence of author keywords in the bibliographic collection.
 
+#### Authors' keywords
+
 ```{r co.word, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # using authors keywords
 cw <- conceptualStructure(df, 
@@ -215,7 +241,21 @@ cw <- conceptualStructure(df,
                           clust = "auto", 
                           stemming = FALSE, 
                           labelsize = 10, 
-                          documents = 15)
+                          documents = 50)
+```
+
+#### Publisher's keywords
+
+```{r co.word2, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# using publishers keywords
+cw <- conceptualStructure(df, 
+                          field = "ID", 
+                          method = "MDS", 
+                          minDegree = 2, 
+                          clust = "auto", 
+                          stemming = FALSE, 
+                          labelsize = 5, 
+                          documents = 50)
 ```
 
 ## Social structure
@@ -239,7 +279,8 @@ auth.collabnet = networkPlot(auth.collab,
                              size = 20, 
                              size.cex = T,
                              edgesize = 2, 
-                             labelsize = 0.5, 
+                             labelsize = 0.5,
+                             remove.multiple = TRUE,
                              remove.isolates = TRUE)
 
 # descriptive analysis of author collaboration network
@@ -263,7 +304,7 @@ edu.collabnet = networkPlot(edu.collab,
                             n = 100, 
                             Title = "Edu Collaboration", 
                             type = "auto", 
-                            size = 40, 
+                            size = 30, 
                             size.cex = T, 
                             edgesize = 2, 
                             labelsize = 0.4, 
