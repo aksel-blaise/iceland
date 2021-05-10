@@ -186,14 +186,14 @@ list[[1]][1:10]
 topKW = KeywordGrowth(df, 
                       Tag = "DE", 
                       sep = ";", 
-                      top=10, 
-                      cdf=TRUE)
+                      top = 10, 
+                      cdf = TRUE)
 
 topKW
 
 # plot results
 key.plot = melt(topKW, 
-                id='Year')
+                id ='Year')
 
 ggplot(key.plot, aes(Year, 
                      value, 
@@ -208,14 +208,14 @@ ggplot(key.plot, aes(Year,
 topKW = KeywordGrowth(df, 
                       Tag = "ID", 
                       sep = ";", 
-                      top=10, 
-                      cdf=TRUE)
+                      top = 10, 
+                      cdf = TRUE)
 
 topKW
 
 # plot results
 key.plot = melt(topKW, 
-                id='Year')
+                id ='Year')
 
 ggplot(key.plot, aes(Year, 
                      value, 

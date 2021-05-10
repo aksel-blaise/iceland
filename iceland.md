@@ -674,8 +674,8 @@ list[[1]][1:10]
 topKW = KeywordGrowth(df, 
                       Tag = "DE", 
                       sep = ";", 
-                      top=10, 
-                      cdf=TRUE)
+                      top = 10, 
+                      cdf = TRUE)
 
 topKW
 ```
@@ -754,7 +754,7 @@ topKW
 ``` r
 # plot results
 key.plot = melt(topKW, 
-                id='Year')
+                id ='Year')
 
 ggplot(key.plot, aes(Year, 
                      value, 
@@ -771,8 +771,8 @@ ggplot(key.plot, aes(Year,
 topKW = KeywordGrowth(df, 
                       Tag = "ID", 
                       sep = ";", 
-                      top=10, 
-                      cdf=TRUE)
+                      top = 10, 
+                      cdf = TRUE)
 
 topKW
 ```
@@ -853,7 +853,7 @@ topKW
 ``` r
 # plot results
 key.plot = melt(topKW, 
-                id='Year')
+                id ='Year')
 
 ggplot(key.plot, aes(Year, 
                      value, 
@@ -998,7 +998,7 @@ summary(edu.collab.netstat, k = 15)
 
 ## Colophon
 
-This version of the analysis was generated on 2021-05-10 08:19:02 using
+This version of the analysis was generated on 2021-05-10 08:51:28 using
 the following computational environment and dependencies:
 
 ``` r
@@ -1154,7 +1154,7 @@ if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r:
 
     ## Local:    main D:/github/iceland
     ## Remote:   main @ origin (https://github.com/aksel-blaise/iceland)
-    ## Head:     [5b7e42a] 2021-05-10: <init iceland>
+    ## Head:     [d03bcdf] 2021-05-10: <edit iceland>
 
 ## References cited
 
