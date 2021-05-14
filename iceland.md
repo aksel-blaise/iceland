@@ -1,7 +1,7 @@
 Iceland Archaeology: Bibliometrics
 ================
 Robert Z. Selden, Jr.
-10 May, 2021
+14 May, 2021
 
 ## Bibliometrics
 
@@ -18,7 +18,7 @@ abtract, or keywords, and was analysed using the `bibliometrix` package
 library(here)
 ```
 
-    ## here() starts at D:/github/iceland
+    ## here() starts at E:/github/iceland
 
 ``` r
 library(bibliometrix)
@@ -365,6 +365,173 @@ CR$Papers[1:20,]
     ## 20                                     SCHMID MME, 2018, HOLOCENE       10.1177/0959683617714597 2018   1   7
     ## 39                                 FORBES V, 2015, J ARCHAEOL SCI      10.1016/j.jas.2015.05.008 2015   1   5
     ## 42                                   BREWINGTON S, 2015, HOLOCENE       10.1177/0959683615591714 2015   1  14
+
+``` r
+# top authors' productivity over time
+topAU <- authorProdOverTime(df, k = 20, graph = TRUE)
+```
+
+<img src="iceland_files/figure-gfm/local.attr-1.png" width="100%" />
+
+``` r
+# number of documents published annually by top sources
+topSO <- sourceGrowth(df, top = 10, cdf = TRUE)
+topSO
+```
+
+    ##      Year JOURNAL OF ARCHAEOLOGICAL SCIENCE INTERNATIONAL JOURNAL OF HISTORICAL ARCHAEOLOGY ENVIRONMENTAL ARCHAEOLOGY
+    ## 1987 1987                                 0                                               0                         0
+    ## 1988 1988                                 0                                               0                         0
+    ## 1989 1989                                 0                                               0                         0
+    ## 1990 1990                                 0                                               0                         0
+    ## 1991 1991                                 0                                               0                         0
+    ## 1992 1992                                 0                                               0                         0
+    ## 1993 1993                                 0                                               0                         0
+    ## 1994 1994                                 0                                               0                         0
+    ## 1995 1995                                 0                                               0                         0
+    ## 1996 1996                                 0                                               0                         0
+    ## 1997 1997                                 0                                               0                         0
+    ## 1998 1998                                 0                                               0                         0
+    ## 1999 1999                                 0                                               0                         0
+    ## 2000 2000                                 0                                               0                         0
+    ## 2001 2001                                 0                                               0                         0
+    ## 2002 2002                                 0                                               0                         0
+    ## 2003 2003                                 0                                               0                         0
+    ## 2004 2004                                 0                                               0                         0
+    ## 2005 2005                                 0                                               0                         0
+    ## 2006 2006                                 0                                               0                         1
+    ## 2007 2007                                 1                                               0                         2
+    ## 2008 2008                                 1                                               0                         2
+    ## 2009 2009                                 1                                               0                         2
+    ## 2010 2010                                 2                                               0                         2
+    ## 2011 2011                                 3                                               0                         2
+    ## 2012 2012                                 3                                               5                         3
+    ## 2013 2013                                 4                                               5                         4
+    ## 2014 2014                                 4                                               5                         4
+    ## 2015 2015                                 8                                               5                         4
+    ## 2016 2016                                 8                                               6                         4
+    ## 2017 2017                                 8                                               6                         4
+    ## 2018 2018                                 8                                               6                         4
+    ## 2019 2019                                 9                                               6                         4
+    ## 2020 2020                                 9                                               6                         4
+    ## 2021 2021                                10                                               6                         4
+    ##      HOLOCENE JOURNAL OF ARCHAEOLOGICAL SCIENCE: REPORTS MEDIEVAL ARCHAEOLOGY HISTORICAL ARCHAEOLOGY HUMAN ECOLOGY
+    ## 1987        0                                          0                    0                      0             0
+    ## 1988        0                                          0                    0                      0             1
+    ## 1989        0                                          0                    0                      0             1
+    ## 1990        0                                          0                    0                      0             1
+    ## 1991        0                                          0                    0                      0             1
+    ## 1992        0                                          0                    0                      0             1
+    ## 1993        0                                          0                    0                      0             1
+    ## 1994        0                                          0                    0                      0             1
+    ## 1995        0                                          0                    0                      0             1
+    ## 1996        0                                          0                    0                      0             1
+    ## 1997        0                                          0                    0                      0             1
+    ## 1998        0                                          0                    0                      0             1
+    ## 1999        0                                          0                    0                      0             1
+    ## 2000        0                                          0                    0                      0             1
+    ## 2001        0                                          0                    0                      0             1
+    ## 2002        0                                          0                    0                      0             1
+    ## 2003        0                                          0                    0                      0             1
+    ## 2004        0                                          0                    0                      0             1
+    ## 2005        0                                          0                    1                      0             1
+    ## 2006        0                                          0                    1                      0             1
+    ## 2007        0                                          0                    1                      0             1
+    ## 2008        0                                          0                    1                      0             1
+    ## 2009        0                                          0                    1                      0             1
+    ## 2010        0                                          0                    1                      0             1
+    ## 2011        0                                          0                    1                      0             1
+    ## 2012        0                                          0                    2                      0             1
+    ## 2013        1                                          0                    2                      0             1
+    ## 2014        1                                          0                    2                      0             1
+    ## 2015        2                                          0                    2                      0             1
+    ## 2016        2                                          2                    2                      0             1
+    ## 2017        2                                          2                    2                      0             1
+    ## 2018        3                                          2                    2                      0             1
+    ## 2019        3                                          3                    3                      1             2
+    ## 2020        3                                          3                    3                      1             2
+    ## 2021        3                                          3                    3                      2             2
+    ##      NEUROSURGERY NORWEGIAN ARCHAEOLOGICAL REVIEW PLOS ONE QUATERNARY GEOCHRONOLOGY RADIOCARBON SCIENCE
+    ## 1987            0                               0        0                        0           0       0
+    ## 1988            0                               0        0                        0           0       0
+    ## 1989            0                               0        0                        0           0       0
+    ## 1990            0                               1        0                        0           0       0
+    ## 1991            0                               1        0                        0           0       0
+    ## 1992            0                               1        0                        0           0       0
+    ## 1993            0                               1        0                        0           0       0
+    ## 1994            0                               1        0                        0           0       0
+    ## 1995            0                               1        0                        0           0       0
+    ## 1996            0                               1        0                        0           0       0
+    ## 1997            0                               2        0                        0           0       0
+    ## 1998            0                               2        0                        0           0       0
+    ## 1999            0                               2        0                        0           0       0
+    ## 2000            0                               2        0                        0           0       0
+    ## 2001            0                               2        0                        0           0       0
+    ## 2002            0                               2        0                        0           0       0
+    ## 2003            0                               2        0                        0           0       0
+    ## 2004            0                               2        0                        0           1       0
+    ## 2005            2                               2        0                        0           1       0
+    ## 2006            2                               2        0                        0           1       0
+    ## 2007            2                               2        0                        0           1       0
+    ## 2008            2                               2        0                        0           1       0
+    ## 2009            2                               2        0                        0           1       0
+    ## 2010            2                               2        0                        0           1       0
+    ## 2011            2                               2        0                        0           1       1
+    ## 2012            2                               2        0                        0           1       1
+    ## 2013            2                               2        0                        0           1       1
+    ## 2014            2                               2        0                        1           1       1
+    ## 2015            2                               2        0                        1           1       1
+    ## 2016            2                               2        1                        1           1       2
+    ## 2017            2                               2        2                        1           1       2
+    ## 2018            2                               2        2                        2           1       2
+    ## 2019            2                               2        2                        2           2       2
+    ## 2020            2                               2        2                        2           2       2
+    ## 2021            2                               2        2                        2           2       2
+    ##      WORLD ARCHAEOLOGY
+    ## 1987                 0
+    ## 1988                 0
+    ## 1989                 0
+    ## 1990                 0
+    ## 1991                 0
+    ## 1992                 0
+    ## 1993                 0
+    ## 1994                 0
+    ## 1995                 0
+    ## 1996                 0
+    ## 1997                 0
+    ## 1998                 0
+    ## 1999                 0
+    ## 2000                 0
+    ## 2001                 0
+    ## 2002                 0
+    ## 2003                 0
+    ## 2004                 0
+    ## 2005                 0
+    ## 2006                 0
+    ## 2007                 0
+    ## 2008                 0
+    ## 2009                 0
+    ## 2010                 0
+    ## 2011                 0
+    ## 2012                 0
+    ## 2013                 0
+    ## 2014                 0
+    ## 2015                 1
+    ## 2016                 1
+    ## 2017                 1
+    ## 2018                 2
+    ## 2019                 2
+    ## 2020                 2
+    ## 2021                 2
+
+``` r
+# plot results
+tso = melt(topSO, id = 'Year')
+ggplot(tso, aes(Year, value, group = variable, color = variable)) + 
+  geom_line()
+```
+
+<img src="iceland_files/figure-gfm/local.attr-2.png" width="100%" />
 
 ## Most cited
 
@@ -904,6 +1071,66 @@ cw <- conceptualStructure(df,
 
 <img src="iceland_files/figure-gfm/co.word2-1.png" width="100%" /><img src="iceland_files/figure-gfm/co.word2-2.png" width="100%" />
 
+## Thematic mapping
+
+From (Cobo et al. 2011, 150–51):
+
+-   Themes in the upper-right quadrant are both well developed and
+    important for the structuring ofa research field. They are known as
+    the motor-themes of the specialty, given that they present strong
+    centrality and high density. The placement of themesin this
+    quadrantimplies that theyare related externally to concepts
+    applicable to otherthemesthat are conceptually closely related.
+-   Themes in the upper-left quadrant have well developed internal ties
+    but unimportant external ties and so are of only marginal importance
+    for the field. These themes are very specialized and peripheral in
+    character.
+-   Themes in the lower-left quadrant are both weakly developed and
+    marginal. The themes ofthis quadrant have low density and low
+    centrality, mainly representing either emerging or disappearing
+    themes.
+-   Themes in the lower-right quadrant are important for a research
+    field but are not developed. So, this quadrant groups transversal
+    and general, basic themes.
+
+### Authors’ keywords
+
+``` r
+# keyword map
+map1 = thematicMap(df, 
+                   field = "DE", 
+                   n = 1000, 
+                   minfreq = 3, 
+                   stemming = FALSE, 
+                   size = 0.8, 
+                   n.labels = 1, 
+                   repel = TRUE)
+
+# plot map
+plot(map1$map)
+```
+
+<img src="iceland_files/figure-gfm/thematic.map-1.png" width="100%" />
+
+### Publisher’s keywords
+
+``` r
+# keyword map
+map1 = thematicMap(df, 
+                   field = "ID", 
+                   n = 1000,
+                   minfreq = 3, 
+                   stemming = FALSE, 
+                   size = 0.8, 
+                   n.labels = 1, 
+                   repel = TRUE)
+
+# plot map
+plot(map1$map)
+```
+
+<img src="iceland_files/figure-gfm/thematic.map2-1.png" width="100%" />
+
 ## Social structure
 
 ### Author collaboration
@@ -996,9 +1223,48 @@ summary(edu.collab.netstat, k = 15)
     ##  Average path length                   2.726 
     ## 
 
+### Country collaboration
+
+``` r
+# country collaboration network
+count <- metaTagExtraction(df, Field = "AU_CO", sep = ";")
+cmat1 <- biblioNetwork(count, analysis = "collaboration", network = "countries", sep = ";")
+# network plot
+cnet1 = networkPlot(cmat1, n = dim(cmat1)[1], Title = "Country Collaboration", type = "circle", size = 10, size.cex = T, edgesize = 1, labelsize = 0.6, cluster = "none")
+```
+
+<div class="figure">
+
+<img src="iceland_files/figure-gfm/count.collab-1.png" alt="In this figure, scientific collaborations are plotted where nodes are countries and links are co-authorships, illustrating collaborations between countries" width="100%" />
+<p class="caption">
+In this figure, scientific collaborations are plotted where nodes are
+countries and links are co-authorships, illustrating collaborations
+between countries
+</p>
+
+</div>
+
+``` r
+# descriptive analysis of country collaboration network
+countnetstat <- networkStat(cmat1)
+summary(countnetstat, k = 15)
+```
+
+    ## 
+    ## 
+    ## Main statistics about the network
+    ## 
+    ##  Size                                  23 
+    ##  Density                               0.304 
+    ##  Transitivity                          0.634 
+    ##  Diameter                              3 
+    ##  Degree Centralization                 0.514 
+    ##  Average path length                   1.671 
+    ## 
+
 ## Colophon
 
-This version of the analysis was generated on 2021-05-10 08:51:28 using
+This version of the analysis was generated on 2021-05-14 02:29:30 using
 the following computational environment and dependencies:
 
 ``` r
@@ -1016,131 +1282,131 @@ if ("devtools" %in% installed.packages()) devtools::session_info()
     ##  collate  English_United States.1252  
     ##  ctype    English_United States.1252  
     ##  tz       America/Chicago             
-    ##  date     2021-05-10                  
+    ##  date     2021-05-14                  
     ## 
     ## - Packages ---------------------------------------------------------------------------------------
-    ##  package          * version  date       lib source                                   
-    ##  abind              1.4-5    2016-07-21 [1] CRAN (R 4.0.0)                           
-    ##  assertthat         0.2.1    2019-03-21 [1] CRAN (R 4.0.2)                           
-    ##  backports          1.2.1    2020-12-09 [1] CRAN (R 4.0.3)                           
-    ##  bibliometrix     * 3.1.0    2021-04-25 [1] Github (massimoaria/bibliometrix@892581e)
-    ##  bibliometrixData   0.1.0    2020-12-10 [1] CRAN (R 4.0.3)                           
-    ##  broom              0.7.6    2021-04-05 [1] CRAN (R 4.0.4)                           
-    ##  cachem             1.0.4    2021-02-13 [1] CRAN (R 4.0.4)                           
-    ##  callr              3.7.0    2021-04-20 [1] CRAN (R 4.0.4)                           
-    ##  car                3.0-10   2020-09-29 [1] CRAN (R 4.0.3)                           
-    ##  carData            3.0-4    2020-05-22 [1] CRAN (R 4.0.0)                           
-    ##  cellranger         1.1.0    2016-07-27 [1] CRAN (R 4.0.2)                           
-    ##  cli                2.5.0    2021-04-26 [1] CRAN (R 4.0.5)                           
-    ##  cluster            2.1.1    2021-02-14 [2] CRAN (R 4.0.5)                           
-    ##  colorspace         2.0-1    2021-05-04 [1] CRAN (R 4.0.5)                           
-    ##  crayon             1.4.1    2021-02-08 [1] CRAN (R 4.0.3)                           
-    ##  curl               4.3.1    2021-04-30 [1] CRAN (R 4.0.5)                           
-    ##  data.table         1.14.0   2021-02-21 [1] CRAN (R 4.0.4)                           
-    ##  DBI                1.1.1    2021-01-15 [1] CRAN (R 4.0.3)                           
-    ##  dendextend         1.15.1   2021-05-08 [1] CRAN (R 4.0.5)                           
-    ##  desc               1.3.0    2021-03-05 [1] CRAN (R 4.0.4)                           
-    ##  devtools           2.4.1    2021-05-05 [1] CRAN (R 4.0.5)                           
-    ##  digest             0.6.27   2020-10-24 [1] CRAN (R 4.0.3)                           
-    ##  dimensionsR        0.0.2    2020-08-28 [1] CRAN (R 4.0.3)                           
-    ##  dplyr              1.0.6    2021-05-05 [1] CRAN (R 4.0.5)                           
-    ##  DT                 0.18     2021-04-14 [1] CRAN (R 4.0.4)                           
-    ##  ellipsis           0.3.2    2021-04-29 [1] CRAN (R 4.0.5)                           
-    ##  evaluate           0.14     2019-05-28 [1] CRAN (R 4.0.2)                           
-    ##  factoextra         1.0.7    2020-04-01 [1] CRAN (R 4.0.3)                           
-    ##  FactoMineR         2.4      2020-12-11 [1] CRAN (R 4.0.3)                           
-    ##  fansi              0.4.2    2021-01-15 [1] CRAN (R 4.0.3)                           
-    ##  farver             2.1.0    2021-02-28 [1] CRAN (R 4.0.4)                           
-    ##  fastmap            1.1.0    2021-01-25 [1] CRAN (R 4.0.3)                           
-    ##  flashClust         1.01-2   2012-08-21 [1] CRAN (R 4.0.3)                           
-    ##  forcats            0.5.1    2021-01-27 [1] CRAN (R 4.0.3)                           
-    ##  foreign            0.8-81   2020-12-22 [2] CRAN (R 4.0.5)                           
-    ##  fs                 1.5.0    2020-07-31 [1] CRAN (R 4.0.2)                           
-    ##  generics           0.1.0    2020-10-31 [1] CRAN (R 4.0.3)                           
-    ##  ggnetwork          0.5.8    2020-02-12 [1] CRAN (R 4.0.5)                           
-    ##  ggplot2          * 3.3.3    2020-12-30 [1] CRAN (R 4.0.3)                           
-    ##  ggpubr             0.4.0    2020-06-27 [1] CRAN (R 4.0.2)                           
-    ##  ggrepel            0.9.1    2021-01-15 [1] CRAN (R 4.0.3)                           
-    ##  ggsignif           0.6.1    2021-02-23 [1] CRAN (R 4.0.4)                           
-    ##  glue               1.4.2    2020-08-27 [1] CRAN (R 4.0.2)                           
-    ##  gridExtra          2.3      2017-09-09 [1] CRAN (R 4.0.2)                           
-    ##  gtable             0.3.0    2019-03-25 [1] CRAN (R 4.0.2)                           
-    ##  haven              2.4.1    2021-04-23 [1] CRAN (R 4.0.5)                           
-    ##  here             * 1.0.1    2020-12-13 [1] CRAN (R 4.0.3)                           
-    ##  highr              0.9      2021-04-16 [1] CRAN (R 4.0.4)                           
-    ##  hms                1.0.0    2021-01-13 [1] CRAN (R 4.0.3)                           
-    ##  htmltools          0.5.1.1  2021-01-22 [1] CRAN (R 4.0.3)                           
-    ##  htmlwidgets        1.5.3    2020-12-10 [1] CRAN (R 4.0.3)                           
-    ##  httpuv             1.6.1    2021-05-07 [1] CRAN (R 4.0.5)                           
-    ##  httr               1.4.2    2020-07-20 [1] CRAN (R 4.0.2)                           
-    ##  igraph             1.2.6    2020-10-06 [1] CRAN (R 4.0.3)                           
-    ##  janeaustenr        0.1.5    2017-06-10 [1] CRAN (R 4.0.5)                           
-    ##  jsonlite           1.7.2    2020-12-09 [1] CRAN (R 4.0.3)                           
-    ##  knitr              1.33     2021-04-24 [1] CRAN (R 4.0.5)                           
-    ##  labeling           0.4.2    2020-10-20 [1] CRAN (R 4.0.3)                           
-    ##  later              1.2.0    2021-04-23 [1] CRAN (R 4.0.5)                           
-    ##  lattice            0.20-41  2020-04-02 [2] CRAN (R 4.0.5)                           
-    ##  lazyeval           0.2.2    2019-03-15 [1] CRAN (R 4.0.2)                           
-    ##  leaps              3.1      2020-01-16 [1] CRAN (R 4.0.3)                           
-    ##  lifecycle          1.0.0    2021-02-15 [1] CRAN (R 4.0.4)                           
-    ##  magrittr           2.0.1    2020-11-17 [1] CRAN (R 4.0.3)                           
-    ##  MASS               7.3-54   2021-05-03 [1] CRAN (R 4.0.5)                           
-    ##  Matrix             1.3-3    2021-05-04 [1] CRAN (R 4.0.5)                           
-    ##  memoise            2.0.0    2021-01-26 [1] CRAN (R 4.0.3)                           
-    ##  mime               0.10     2021-02-13 [1] CRAN (R 4.0.4)                           
-    ##  munsell            0.5.0    2018-06-12 [1] CRAN (R 4.0.2)                           
-    ##  openxlsx           4.2.3    2020-10-27 [1] CRAN (R 4.0.3)                           
-    ##  pillar             1.6.0    2021-04-13 [1] CRAN (R 4.0.5)                           
-    ##  pkgbuild           1.2.0    2020-12-15 [1] CRAN (R 4.0.3)                           
-    ##  pkgconfig          2.0.3    2019-09-22 [1] CRAN (R 4.0.2)                           
-    ##  pkgload            1.2.1    2021-04-06 [1] CRAN (R 4.0.5)                           
-    ##  plotly             4.9.3    2021-01-10 [1] CRAN (R 4.0.3)                           
-    ##  plyr               1.8.6    2020-03-03 [1] CRAN (R 4.0.2)                           
-    ##  prettyunits        1.1.1    2020-01-24 [1] CRAN (R 4.0.2)                           
-    ##  processx           3.5.2    2021-04-30 [1] CRAN (R 4.0.5)                           
-    ##  promises           1.2.0.1  2021-02-11 [1] CRAN (R 4.0.3)                           
-    ##  ps                 1.6.0    2021-02-28 [1] CRAN (R 4.0.4)                           
-    ##  pubmedR            0.0.3    2020-07-09 [1] CRAN (R 4.0.3)                           
-    ##  purrr              0.3.4    2020-04-17 [1] CRAN (R 4.0.2)                           
-    ##  R6                 2.5.0    2020-10-28 [1] CRAN (R 4.0.3)                           
-    ##  RColorBrewer       1.1-2    2014-12-07 [1] CRAN (R 4.0.0)                           
-    ##  Rcpp               1.0.6    2021-01-15 [1] CRAN (R 4.0.3)                           
-    ##  readr              1.4.0    2020-10-05 [1] CRAN (R 4.0.3)                           
-    ##  readxl             1.3.1    2019-03-13 [1] CRAN (R 4.0.2)                           
-    ##  remotes            2.3.0    2021-04-01 [1] CRAN (R 4.0.5)                           
-    ##  rentrez            1.2.3    2020-11-10 [1] CRAN (R 4.0.3)                           
-    ##  reshape2         * 1.4.4    2020-04-09 [1] CRAN (R 4.0.3)                           
-    ##  rio                0.5.26   2021-03-01 [1] CRAN (R 4.0.4)                           
-    ##  rlang              0.4.10   2020-12-30 [1] CRAN (R 4.0.3)                           
-    ##  rmarkdown          2.8      2021-05-07 [1] CRAN (R 4.0.5)                           
-    ##  rprojroot          2.0.2    2020-11-15 [1] CRAN (R 4.0.3)                           
-    ##  rscopus            0.6.6    2019-09-17 [1] CRAN (R 4.0.3)                           
-    ##  rstatix            0.7.0    2021-02-13 [1] CRAN (R 4.0.4)                           
-    ##  scales             1.1.1    2020-05-11 [1] CRAN (R 4.0.2)                           
-    ##  scatterplot3d      0.3-41   2018-03-14 [1] CRAN (R 4.0.3)                           
-    ##  sessioninfo        1.1.1    2018-11-05 [1] CRAN (R 4.0.2)                           
-    ##  shiny              1.6.0    2021-01-25 [1] CRAN (R 4.0.3)                           
-    ##  SnowballC          0.7.0    2020-04-01 [1] CRAN (R 4.0.3)                           
-    ##  stringdist         0.9.6.3  2020-10-09 [1] CRAN (R 4.0.3)                           
-    ##  stringi            1.5.3    2020-09-09 [1] CRAN (R 4.0.2)                           
-    ##  stringr            1.4.0    2019-02-10 [1] CRAN (R 4.0.2)                           
-    ##  testthat           3.0.2    2021-02-14 [1] CRAN (R 4.0.4)                           
-    ##  tibble             3.1.1    2021-04-18 [1] CRAN (R 4.0.4)                           
-    ##  tidyr              1.1.3    2021-03-03 [1] CRAN (R 4.0.4)                           
-    ##  tidyselect         1.1.1    2021-04-30 [1] CRAN (R 4.0.5)                           
-    ##  tidytext           0.3.1    2021-04-10 [1] CRAN (R 4.0.5)                           
-    ##  tokenizers         0.2.1    2018-03-29 [1] CRAN (R 4.0.5)                           
-    ##  usethis            2.0.1    2021-02-10 [1] CRAN (R 4.0.3)                           
-    ##  utf8               1.2.1    2021-03-12 [1] CRAN (R 4.0.4)                           
-    ##  vctrs              0.3.8    2021-04-29 [1] CRAN (R 4.0.5)                           
-    ##  viridis            0.6.0    2021-04-15 [1] CRAN (R 4.0.4)                           
-    ##  viridisLite        0.4.0    2021-04-13 [1] CRAN (R 4.0.5)                           
-    ##  withr              2.4.2    2021-04-18 [1] CRAN (R 4.0.4)                           
-    ##  xfun               0.22     2021-03-11 [1] CRAN (R 4.0.4)                           
-    ##  XML                3.99-0.6 2021-03-16 [1] CRAN (R 4.0.4)                           
-    ##  xtable             1.8-4    2019-04-21 [1] CRAN (R 4.0.2)                           
-    ##  yaml               2.2.1    2020-02-01 [1] CRAN (R 4.0.0)                           
-    ##  zip                2.1.1    2020-08-27 [1] CRAN (R 4.0.2)                           
+    ##  package          * version   date       lib source                                   
+    ##  abind              1.4-5     2016-07-21 [1] CRAN (R 4.0.0)                           
+    ##  assertthat         0.2.1     2019-03-21 [1] CRAN (R 4.0.2)                           
+    ##  backports          1.2.1     2020-12-09 [1] CRAN (R 4.0.3)                           
+    ##  bibliometrix     * 3.1.0     2021-05-12 [1] Github (massimoaria/bibliometrix@a1cde74)
+    ##  bibliometrixData   0.1.0     2020-12-10 [1] CRAN (R 4.0.5)                           
+    ##  broom              0.7.6     2021-04-05 [1] CRAN (R 4.0.5)                           
+    ##  cachem             1.0.4     2021-02-13 [1] CRAN (R 4.0.3)                           
+    ##  callr              3.7.0     2021-04-20 [1] CRAN (R 4.0.5)                           
+    ##  car                3.0-10    2020-09-29 [1] CRAN (R 4.0.2)                           
+    ##  carData            3.0-4     2020-05-22 [1] CRAN (R 4.0.0)                           
+    ##  cellranger         1.1.0     2016-07-27 [1] CRAN (R 4.0.2)                           
+    ##  cli                2.5.0     2021-04-26 [1] CRAN (R 4.0.5)                           
+    ##  cluster            2.1.1     2021-02-14 [2] CRAN (R 4.0.5)                           
+    ##  colorspace         2.0-1     2021-05-04 [1] CRAN (R 4.0.5)                           
+    ##  crayon             1.4.1     2021-02-08 [1] CRAN (R 4.0.3)                           
+    ##  curl               4.3.1     2021-04-30 [1] CRAN (R 4.0.5)                           
+    ##  data.table         1.14.0    2021-02-21 [1] CRAN (R 4.0.3)                           
+    ##  DBI                1.1.1     2021-01-15 [1] CRAN (R 4.0.3)                           
+    ##  dendextend         1.15.1    2021-05-08 [1] CRAN (R 4.0.5)                           
+    ##  desc               1.3.0     2021-03-05 [1] CRAN (R 4.0.5)                           
+    ##  devtools           2.4.1     2021-05-05 [1] CRAN (R 4.0.5)                           
+    ##  digest             0.6.27    2020-10-24 [1] CRAN (R 4.0.3)                           
+    ##  dimensionsR        0.0.2     2020-08-28 [1] CRAN (R 4.0.5)                           
+    ##  dplyr              1.0.6     2021-05-05 [1] CRAN (R 4.0.5)                           
+    ##  DT                 0.18      2021-04-14 [1] CRAN (R 4.0.4)                           
+    ##  ellipsis           0.3.2     2021-04-29 [1] CRAN (R 4.0.5)                           
+    ##  evaluate           0.14      2019-05-28 [1] CRAN (R 4.0.2)                           
+    ##  factoextra         1.0.7     2020-04-01 [1] CRAN (R 4.0.5)                           
+    ##  FactoMineR         2.4       2020-12-11 [1] CRAN (R 4.0.5)                           
+    ##  fansi              0.4.2     2021-01-15 [1] CRAN (R 4.0.3)                           
+    ##  farver             2.1.0     2021-02-28 [1] CRAN (R 4.0.5)                           
+    ##  fastmap            1.1.0     2021-01-25 [1] CRAN (R 4.0.3)                           
+    ##  flashClust         1.01-2    2012-08-21 [1] CRAN (R 4.0.3)                           
+    ##  forcats            0.5.1     2021-01-27 [1] CRAN (R 4.0.3)                           
+    ##  foreign            0.8-81    2020-12-22 [2] CRAN (R 4.0.5)                           
+    ##  fs                 1.5.0     2020-07-31 [1] CRAN (R 4.0.2)                           
+    ##  generics           0.1.0     2020-10-31 [1] CRAN (R 4.0.3)                           
+    ##  ggnetwork          0.5.8     2020-02-12 [1] CRAN (R 4.0.5)                           
+    ##  ggplot2          * 3.3.3     2020-12-30 [1] CRAN (R 4.0.3)                           
+    ##  ggpubr             0.4.0.999 2021-05-12 [1] Github (kassambara/ggpubr@ac5a01f)       
+    ##  ggrepel            0.9.1     2021-01-15 [1] CRAN (R 4.0.3)                           
+    ##  ggsignif           0.6.1     2021-02-23 [1] CRAN (R 4.0.5)                           
+    ##  glue               1.4.2     2020-08-27 [1] CRAN (R 4.0.2)                           
+    ##  gridExtra          2.3       2017-09-09 [1] CRAN (R 4.0.2)                           
+    ##  gtable             0.3.0     2019-03-25 [1] CRAN (R 4.0.2)                           
+    ##  haven              2.4.1     2021-04-23 [1] CRAN (R 4.0.5)                           
+    ##  here             * 1.0.1     2020-12-13 [1] CRAN (R 4.0.3)                           
+    ##  highr              0.9       2021-04-16 [1] CRAN (R 4.0.5)                           
+    ##  hms                1.0.0     2021-01-13 [1] CRAN (R 4.0.3)                           
+    ##  htmltools          0.5.1.1   2021-01-22 [1] CRAN (R 4.0.3)                           
+    ##  htmlwidgets        1.5.3     2020-12-10 [1] CRAN (R 4.0.3)                           
+    ##  httpuv             1.6.1     2021-05-07 [1] CRAN (R 4.0.5)                           
+    ##  httr               1.4.2     2020-07-20 [1] CRAN (R 4.0.2)                           
+    ##  igraph             1.2.6     2020-10-06 [1] CRAN (R 4.0.5)                           
+    ##  janeaustenr        0.1.5     2017-06-10 [1] CRAN (R 4.0.5)                           
+    ##  jsonlite           1.7.2     2020-12-09 [1] CRAN (R 4.0.3)                           
+    ##  knitr              1.33      2021-04-24 [1] CRAN (R 4.0.5)                           
+    ##  labeling           0.4.2     2020-10-20 [1] CRAN (R 4.0.3)                           
+    ##  later              1.2.0     2021-04-23 [1] CRAN (R 4.0.5)                           
+    ##  lattice            0.20-41   2020-04-02 [2] CRAN (R 4.0.5)                           
+    ##  lazyeval           0.2.2     2019-03-15 [1] CRAN (R 4.0.2)                           
+    ##  leaps              3.1       2020-01-16 [1] CRAN (R 4.0.5)                           
+    ##  lifecycle          1.0.0     2021-02-15 [1] CRAN (R 4.0.4)                           
+    ##  magrittr           2.0.1     2020-11-17 [1] CRAN (R 4.0.3)                           
+    ##  MASS               7.3-53.1  2021-02-12 [2] CRAN (R 4.0.5)                           
+    ##  Matrix             1.3-2     2021-01-06 [2] CRAN (R 4.0.5)                           
+    ##  memoise            2.0.0     2021-01-26 [1] CRAN (R 4.0.3)                           
+    ##  mime               0.10      2021-02-13 [1] CRAN (R 4.0.4)                           
+    ##  munsell            0.5.0     2018-06-12 [1] CRAN (R 4.0.2)                           
+    ##  openxlsx           4.2.3     2020-10-27 [1] CRAN (R 4.0.3)                           
+    ##  pillar             1.6.0     2021-04-13 [1] CRAN (R 4.0.5)                           
+    ##  pkgbuild           1.2.0     2020-12-15 [1] CRAN (R 4.0.3)                           
+    ##  pkgconfig          2.0.3     2019-09-22 [1] CRAN (R 4.0.2)                           
+    ##  pkgload            1.2.1     2021-04-06 [1] CRAN (R 4.0.5)                           
+    ##  plotly             4.9.3     2021-01-10 [1] CRAN (R 4.0.3)                           
+    ##  plyr               1.8.6     2020-03-03 [1] CRAN (R 4.0.2)                           
+    ##  prettyunits        1.1.1     2020-01-24 [1] CRAN (R 4.0.2)                           
+    ##  processx           3.5.2     2021-04-30 [1] CRAN (R 4.0.5)                           
+    ##  promises           1.2.0.1   2021-02-11 [1] CRAN (R 4.0.3)                           
+    ##  ps                 1.6.0     2021-02-28 [1] CRAN (R 4.0.5)                           
+    ##  pubmedR            0.0.3     2020-07-09 [1] CRAN (R 4.0.5)                           
+    ##  purrr              0.3.4     2020-04-17 [1] CRAN (R 4.0.2)                           
+    ##  R6                 2.5.0     2020-10-28 [1] CRAN (R 4.0.3)                           
+    ##  RColorBrewer       1.1-2     2014-12-07 [1] CRAN (R 4.0.0)                           
+    ##  Rcpp               1.0.6     2021-01-15 [1] CRAN (R 4.0.3)                           
+    ##  readr              1.4.0     2020-10-05 [1] CRAN (R 4.0.2)                           
+    ##  readxl             1.3.1     2019-03-13 [1] CRAN (R 4.0.2)                           
+    ##  remotes            2.3.0     2021-04-01 [1] CRAN (R 4.0.5)                           
+    ##  rentrez            1.2.3     2020-11-10 [1] CRAN (R 4.0.5)                           
+    ##  reshape2         * 1.4.4     2020-04-09 [1] CRAN (R 4.0.5)                           
+    ##  rio                0.5.26    2021-03-01 [1] CRAN (R 4.0.5)                           
+    ##  rlang              0.4.11    2021-04-30 [1] CRAN (R 4.0.5)                           
+    ##  rmarkdown          2.8       2021-05-07 [1] CRAN (R 4.0.5)                           
+    ##  rprojroot          2.0.2     2020-11-15 [1] CRAN (R 4.0.3)                           
+    ##  rscopus            0.6.6     2019-09-17 [1] CRAN (R 4.0.5)                           
+    ##  rstatix            0.7.0     2021-02-13 [1] CRAN (R 4.0.4)                           
+    ##  scales             1.1.1     2020-05-11 [1] CRAN (R 4.0.2)                           
+    ##  scatterplot3d      0.3-41    2018-03-14 [1] CRAN (R 4.0.3)                           
+    ##  sessioninfo        1.1.1     2018-11-05 [1] CRAN (R 4.0.2)                           
+    ##  shiny              1.6.0     2021-01-25 [1] CRAN (R 4.0.3)                           
+    ##  SnowballC          0.7.0     2020-04-01 [1] CRAN (R 4.0.3)                           
+    ##  stringdist         0.9.6.3   2020-10-09 [1] CRAN (R 4.0.3)                           
+    ##  stringi            1.6.1     2021-05-10 [1] CRAN (R 4.0.5)                           
+    ##  stringr            1.4.0     2019-02-10 [1] CRAN (R 4.0.2)                           
+    ##  testthat           3.0.2     2021-02-14 [1] CRAN (R 4.0.4)                           
+    ##  tibble             3.1.1     2021-04-18 [1] CRAN (R 4.0.5)                           
+    ##  tidyr              1.1.3     2021-03-03 [1] CRAN (R 4.0.5)                           
+    ##  tidyselect         1.1.1     2021-04-30 [1] CRAN (R 4.0.5)                           
+    ##  tidytext           0.3.1     2021-04-10 [1] CRAN (R 4.0.5)                           
+    ##  tokenizers         0.2.1     2018-03-29 [1] CRAN (R 4.0.5)                           
+    ##  usethis            2.0.1     2021-02-10 [1] CRAN (R 4.0.3)                           
+    ##  utf8               1.2.1     2021-03-12 [1] CRAN (R 4.0.5)                           
+    ##  vctrs              0.3.8     2021-04-29 [1] CRAN (R 4.0.5)                           
+    ##  viridis            0.6.1     2021-05-11 [1] CRAN (R 4.0.5)                           
+    ##  viridisLite        0.4.0     2021-04-13 [1] CRAN (R 4.0.5)                           
+    ##  withr              2.4.2     2021-04-18 [1] CRAN (R 4.0.5)                           
+    ##  xfun               0.22      2021-03-11 [1] CRAN (R 4.0.5)                           
+    ##  XML                3.99-0.6  2021-03-16 [1] CRAN (R 4.0.5)                           
+    ##  xtable             1.8-4     2019-04-21 [1] CRAN (R 4.0.2)                           
+    ##  yaml               2.2.1     2020-02-01 [1] CRAN (R 4.0.2)                           
+    ##  zip                2.1.1     2020-08-27 [1] CRAN (R 4.0.2)                           
     ## 
     ## [1] C:/Users/seldenjrz/Documents/R/win-library/4.0
     ## [2] C:/Program Files/R/R-4.0.5/library
@@ -1152,9 +1418,9 @@ Current Git commit details are:
 if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())  
 ```
 
-    ## Local:    main D:/github/iceland
+    ## Local:    main E:/github/iceland
     ## Remote:   main @ origin (https://github.com/aksel-blaise/iceland)
-    ## Head:     [d03bcdf] 2021-05-10: <edit iceland>
+    ## Head:     [463ed5a] 2021-05-10: <general code edits>
 
 ## References cited
 
@@ -1165,6 +1431,16 @@ if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r:
 Aria, Massimo, and Corrado Cuccurullo. 2017. “Bibliometrix : An r-Tool
 for Comprehensive Science Mapping Analysis.” *Journal of Informetrics*
 11 (4): 959–75. <https://doi.org/10.1016/j.joi.2017.08.007>.
+
+</div>
+
+<div id="ref-RN20996" class="csl-entry">
+
+Cobo, M. J., A. G. López-Herrera, E. Herrera-Viedma, and F. Herrera.
+2011. “An Approach for Detecting, Quantifying, and Visualizing the
+Evolution of a Research Field: A Practical Application to the Fuzzy Sets
+Theory Field.” Journal Article. *Journal of Informetrics* 5 (1): 146–66.
+<https://doi.org/10.1016/j.joi.2010.10.002>.
 
 </div>
 

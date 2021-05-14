@@ -54,6 +54,17 @@ CR$Authors[1:20,]
 
 # top 20 cited papers in local network
 CR$Papers[1:20,]
+
+# top authors' productivity over time
+topAU <- authorProdOverTime(df, k = 20, graph = TRUE)
+
+# number of documents published annually by top sources
+topSO <- sourceGrowth(df, top = 10, cdf = TRUE)
+topSO
+# plot results
+tso = melt(topSO, id = 'Year')
+ggplot(tso, aes(Year, value, group = variable, color = variable)) + 
+  geom_line()
 ```
 
 ## Most cited
@@ -258,6 +269,49 @@ cw <- conceptualStructure(df,
                           documents = 50)
 ```
 
+## Thematic mapping
+
+From [@RN20996, 150-151]:
+
+* Themes in the upper-right quadrant are both well developed and important for the structuring ofa research field. They are known as the motor-themes of the specialty, given that they present strong centrality and high density. The placement of themesin this quadrantimplies that theyare related externally to concepts applicable to otherthemesthat are conceptually closely related.
+* Themes in the upper-left quadrant have well developed internal ties but unimportant external ties and so are of only marginal importance for the field. These themes are very specialized and peripheral in character.
+* Themes in the lower-left quadrant are both weakly developed and marginal. The themes ofthis quadrant have low density and low centrality, mainly representing either emerging or disappearing themes.
+* Themes in the lower-right quadrant are important for a research field but are not developed. So, this quadrant groups transversal and general, basic themes.
+
+### Authors' keywords
+
+```{r thematic.map, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# keyword map
+map1 = thematicMap(df, 
+                   field = "DE", 
+                   n = 1000, 
+                   minfreq = 3, 
+                   stemming = FALSE, 
+                   size = 0.8, 
+                   n.labels = 1, 
+                   repel = TRUE)
+
+# plot map
+plot(map1$map)
+```
+
+### Publisher's keywords
+
+```{r thematic.map2, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# keyword map
+map1 = thematicMap(df, 
+                   field = "ID", 
+                   n = 1000,
+                   minfreq = 3, 
+                   stemming = FALSE, 
+                   size = 0.8, 
+                   n.labels = 1, 
+                   repel = TRUE)
+
+# plot map
+plot(map1$map)
+```
+
 ## Social structure
 
 ### Author collaboration 
@@ -313,6 +367,19 @@ edu.collabnet = networkPlot(edu.collab,
 # descriptive analysis of edu collaboration network
 edu.collab.netstat<-networkStat(edu.collab)
 summary(edu.collab.netstat, k = 15)
+```
+
+### Country collaboration
+
+```{r count.collab, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, fig.cap="In this figure, scientific collaborations are plotted where nodes are countries and links are co-authorships, illustrating collaborations between countries"}
+# country collaboration network
+count <- metaTagExtraction(df, Field = "AU_CO", sep = ";")
+cmat1 <- biblioNetwork(count, analysis = "collaboration", network = "countries", sep = ";")
+# network plot
+cnet1 = networkPlot(cmat1, n = dim(cmat1)[1], Title = "Country Collaboration", type = "circle", size = 10, size.cex = T, edgesize = 1, labelsize = 0.6, cluster = "none")
+# descriptive analysis of country collaboration network
+countnetstat <- networkStat(cmat1)
+summary(countnetstat, k = 15)
 ```
 
 ## Colophon
